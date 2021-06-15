@@ -325,7 +325,7 @@ header.header-nav.menu_style_home_three .ace-responsive-menu li a{
 }
 header.header-nav.menu_style_home_three .sign_up_btn .btn{
     background-color:#bc7cbf;
-    border:1px solid black;
+    border:1px solid rgb(211, 47, 47);
     color:#fff
 }
 .sign_up_btn .btn{
@@ -375,7 +375,7 @@ header.header-nav.menu_style_home_four .sign_up_btn .btn{
     background-color:transparent;
     border:1px solid #fff;
     border-radius:30px;
-    color:#fff;
+    color:rgb(124, 11, 11);
     height:45px;
     line-height:30px;
     margin-top:22px
@@ -384,10 +384,10 @@ header.header-nav.menu_style_home_four .sign_up_btn .btn span{
     color:#fff
 }
 .sign_up_btn .btn{
-    border:1px solid #515252;
+    border:1px solid #01bbbb;
     box-shadow:none;
     border-radius:4px;
-    color:silver;
+    color:rgb(75, 9, 9);
     height:55px;
     line-height:40px;
     width:170px;
@@ -6363,15 +6363,15 @@ a.scrollToHome.text-thm:hover{
     top:0
 }
 .emplye_single_v2:before{
-    background-image:url(../images/about/6.png);
+    background-image:url(../images/employeDtl.jpg);
     background-repeat:no-repeat;
-    background-position:right;
-    bottom:0;
+    background-position:bottom;
+    bottom: -100px;
     content:"";
-    opacity:.07;
-    position:absolute;
+    opacity:.3;
+    position:fixed;
     right:0;
-    top:0;
+    top: 0px;;
     width:100%
 }
 .our-contfact{
