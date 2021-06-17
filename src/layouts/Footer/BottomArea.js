@@ -7,7 +7,7 @@ export default function BottomArea() {
 			<div className="row">
 				<div className="col-lg-4 pb10 pt10">
 					<div className="copyright-widget tac-smd mt20">
-						<p>© 2021 Can Ozyigit. Tüm Hakları Saklıdır.</p>
+						<p>© 2021 Can Ozyigit. </p>
 					</div>
 				</div>
 				<div className="col-lg-8 pb10 pt10">

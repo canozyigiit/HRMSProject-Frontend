@@ -9,17 +9,24 @@ import JobSeekerList from '../components/JobSeeker/JobSeekerList'
 import { Route } from 'react-router';
 import FooterTopArea from './Footer/FooterTopArea';
 import JobAdvertDetail from '../components/JobAdvert/JobAdvertDetail';
+import EmployerDetail from '../components/Employer/EmployerDetail';
+import JobSeekerDetail from '../components/JobSeeker/JobSeekerDetail';
 export default function Dashboard() {
     return (
         <div>
             <Navi />
             <br/>
             <Route exact path="/" component={Home} />
+
             <Route exact path="/jobAdverts" component={JobAdvertList} />
-            <Route exact path="/jobAdverts/:id" component={JobAdvertDetail} />
-            <Route path="/employers" component={EmployerList} />
+            <Route exact path="/jobAdverts/:jobAdvertId" component={JobAdvertDetail} />
+
+            <Route exact path="/employers" component={EmployerList} />
+            <Route exact path="/employers/:employerId" component={EmployerDetail} />
+            
             <Route exact path="/jobSeekers" component={JobSeekerList} />
-            <FooterTopArea/>
+            <Route exact path="/jobSeekers/:id" component={JobSeekerDetail} />
+            <FooterTopArea/> 
             <Footer />
             <BottomArea />
         </div>

@@ -1,9 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-export default function BrowseLocalJobs() {
+export default function CreateAnAccount() {
     return (
-		<section className="divider home5">
+        <section className="divider home5">
 		<div className="container">
 			<div className="row">
 				<div className="col-lg-9 offset-lg-2 text-center">

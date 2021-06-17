@@ -4,10 +4,6 @@ export default class JobAdvertService {
     getJobAdverts() {
         return axios.get("http://localhost:8080/api/jobadverts/getall");
     }
-    addJobAdvert(){
-        return axios.post()
-    }
-
     getAllisOpenTrueAndCityId(id) {
         return axios.get("http://localhost:8080/api/jobadverts/getAllisOpenTrueAndCity_Id?id=" + id);
     }
@@ -23,8 +19,8 @@ export default class JobAdvertService {
     changeOpenToClose(id){
         return axios.post("http://localhost:8080/api/jobadverts/changeOpenToClose?id="+id);
     }
-    getJobAdvertById(id){
-        return axios.get("http://localhost:8080/api/jobadverts/getbyid/"+id);
+    getJobAdvertById(jobAdvertId){
+        return axios.get("http://localhost:8080/api/jobadverts/getbyid/"+jobAdvertId);
     }
     
    
