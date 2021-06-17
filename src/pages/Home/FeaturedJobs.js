@@ -28,7 +28,7 @@ export default function FeaturedJobs() {
 							<div className="col-sm-12 col-lg-12" key={jobAdvert.id}>
 								<div className="fj_post">
 									<div className="details">
-										<h5 className="job_chedule text-thm mt0">Full Time</h5>
+										<h5 className="job_chedule text-thm mt0">{jobAdvert.jobTypeType} - {jobAdvert.jobWorkSpaceTypeName}</h5>
 										<div className="thumb fn-smd">
 										{jobAdvert.employerPhoto ? <img src={jobAdvert.employerPhoto} alt=" " /> : <img src={defaultImage} alt=" " />}
 										</div>

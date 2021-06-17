@@ -9,15 +9,15 @@ import JobAdvertService from '../../services/JobAdvertService'
 
 export default function Footer() {
 	const [cities, setCities] = useState([])
+	const [jobPositions, setjobPositions] = useState([])
 	useEffect(() => {
 		let cityService = new CityService()
 		cityService.getCities().then(result => setCities(result.data.data))
-	}, [])
-	const [jobPositions, setjobPositions] = useState([])
-	useEffect(() => {
 		let jobPositionService = new JobPositionService()
 		jobPositionService.getJobPositions().then(result => setjobPositions(result.data.data))
 	}, [])
+
+
 	return (
 		<section className="footer_one">
 			<div className="container">
@@ -58,15 +58,9 @@ export default function Footer() {
 						</div>
 					</div>
 					<div className="col-sm-8 col-md-6 col-md-3 col-lg-4">
-						<div className="newsletter_widget">
-							<h4>Bülten</h4>
-							<p>
-								Yayınlanan en son işleri, adayları ve diğer en son haberleri almak için CareerUp  bültenine abone olun.</p>
-							<form className="form-inline mailchimp_form">
-								<label className="sr-only" htmlFor="inlineFormInputMail2">Name</label>
-								<input type="email" className="form-control mb-2 mr-sm-2" id="inlineFormInputMail2" placeholder="Enter your email address" />
-								<button type="submit" className="btn btn-primary mb-2"><span className="fa fa-paper-plane-o"></span></button>
-							</form>
+
+						<div className="LI-profile-badge" data-version="v1" data-size="large" data-locale="tr_TR" data-type="vertical" data-theme="dark" data-vanity="can-özyiğit-884568200">
+							<a className="LI-simple-link" href='https://tr.linkedin.com/in/can-%C3%B6zyi%C4%9Fit-884568200?trk=profile-badge'>Can Özyiğit</a>
 						</div>
 					</div>
 				</div>

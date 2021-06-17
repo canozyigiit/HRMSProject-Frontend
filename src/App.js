@@ -1,9 +1,9 @@
 import Dashboard from '../src/layouts/Dashboard';
-import '../src/assets/css/style.css';
-
+import './App.css';
+import '../src/assets/css/style.css'
 function App() {
   return (
-    <div className="App">
+    <div>
       
       <Dashboard/>
     </div>

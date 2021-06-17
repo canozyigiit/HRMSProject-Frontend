@@ -8,15 +8,15 @@ import { Link } from 'react-router-dom'
 
 export default function JobAdvertList() {
     const [jobAdverts, setJobAdverts] = useState([])
+    const [jobPositions, setjobPositions] = useState([])
+
     useEffect(() => {
         let jobAdvertService = new JobAdvertService()
         jobAdvertService.getAllOpenTrueJobAdvertList().then(result => setJobAdverts(result.data.data))
-    }, [])
-    const [jobPositions, setjobPositions] = useState([])
-    useEffect(() => {
         let jobPositionService = new JobPositionService()
         jobPositionService.getJobPositions().then(result => setjobPositions(result.data.data))
     }, [])
+
 
     return (
         <section className="our-faq bgc-fa mt50">
@@ -101,7 +101,7 @@ export default function JobAdvertList() {
                                 <div className="col-lg-12 mt30" key={jobAdvert.id}>
                                     <div className="fj_post style2 jlv5">
                                         <div className="details">
-                                            <h5 className="job_chedule text-thm">{jobAdvert.jobTypeType} - {jobAdvert.jobStyleName}</h5>
+                                            <h5 className="job_chedule text-thm">{jobAdvert.jobTypeType} - {jobAdvert.jobWorkSpaceTypeName}</h5>
                                             <div className="thumb">
                                                 {jobAdvert.employerPhoto ? <img src={jobAdvert.employerPhoto} alt=" " /> : <img src={defaultImage} alt=" " />}
                                             </div>
@@ -115,9 +115,7 @@ export default function JobAdvertList() {
                                             </ul>
                                         </div>
                                         <ul className="pjlv5">
-                                            <li className="list-inline-item">
-                                                <a className="favorit" href=" "><span className="flaticon-favorites"></span></a>
-                                            </li>
+                                          
                                             <li className="list-inline-item">
                                                 <Link to={`/jobAdverts/${jobAdvert.id}`}><a href=" " className="btn btn-md btn-transparent" >İlana Git</a></Link>
                                             </li>

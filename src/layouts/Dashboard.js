@@ -11,6 +11,7 @@ import FooterTopArea from './Footer/FooterTopArea';
 import JobAdvertDetail from '../components/JobAdvert/JobAdvertDetail';
 import EmployerDetail from '../components/Employer/EmployerDetail';
 import JobSeekerDetail from '../components/JobSeeker/JobSeekerDetail';
+import PostJob from '../pages/PostJob';
 export default function Dashboard() {
     return (
         <div>
@@ -23,6 +24,7 @@ export default function Dashboard() {
 
             <Route exact path="/employers" component={EmployerList} />
             <Route exact path="/employers/:employerId" component={EmployerDetail} />
+            <Route exact path="/postJob" component={PostJob} />
             
             <Route exact path="/jobSeekers" component={JobSeekerList} />
             <Route exact path="/jobSeekers/:id" component={JobSeekerDetail} />

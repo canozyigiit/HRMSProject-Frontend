@@ -1,24 +1,26 @@
 import React, { useState, useEffect } from 'react'
-import logo from '../../assets/images/header-logo.png'
 import JobPositionService from '../../services/JobPositionService'
 import EmployerService from '../../services/EmployerService'
+import JobAdvertService from '../../services/JobAdvertService'
 import JobSeekerService from '../../services/JobSeekerService'
+import  logo from '../../header-logo.png'
 export default function FooterTopArea() {
 	const [jobPositions, setjobPositions] = useState([])
+	const [employers, setEmployers] = useState([])
+	const [jobSekeers, setJobSekeers] = useState([])
+	const [jobAdverts, setJobAdverts] = useState([])
+   
 	useEffect(() => {
 		let jobPositionService = new JobPositionService()
 		jobPositionService.getJobPositions().then(result => setjobPositions(result.data.data))
-	}, [])
-	const [employers, setEmployers] = useState([])
-    useEffect(() => {
-        let employerService = new EmployerService()
+		let jobAdvertService = new JobAdvertService()
+        jobAdvertService.getAllOpenTrueJobAdvertList().then(result => setJobAdverts(result.data.data))
+		let employerService = new EmployerService()
         employerService.getEmployers().then(result => setEmployers(result.data.data))
-    },[])
-	const [jobSekeers, setJobSekeers] = useState([])
-    useEffect(() => {
-        let jobSeekerService = new JobSeekerService()
+		let jobSeekerService = new JobSeekerService()
         jobSeekerService.getJobSeekers().then(result => setJobSekeers(result.data.data))
-    }, [])
+	}, [])
+	
 
     return (
 
@@ -35,13 +37,19 @@ export default function FooterTopArea() {
 						<div className="col-xs-6 col-sm-3 col-md-3 col-lg-3">
 							<div className="funfact_one">
 								<div className="timer">{employers.length}</div>
-								<p>İş Verenler</p>
+								<p>İş Veren</p>
 							</div>
 						</div>
 						<div className="col-xs-6 col-sm-3 col-md-3 col-lg-3">
 							<div className="funfact_one">
-								<div className="timer">{jobPositions.length}</div>
-								<p>İlanlar</p>
+								<div className="timer" key={jobPositions.id}>{jobPositions.length}</div>
+								<p>İş Pozisyonu</p>
+							</div>
+						</div>
+						<div className="col-xs-6 col-sm-3 col-md-3 col-lg-3">
+							<div className="funfact_one">
+								<div className="timer">{jobAdverts.length}</div>
+								<p>İş İlanı</p>
 							</div>
 						</div>
 						<div className="col-xs-6 col-sm-3 col-md-3 col-lg-3">

@@ -1,5 +1,5 @@
 import React from 'react'
-import headerLogo from '../../assets/images/header-logo5.png'
+import headerLogo from '../../header-logo5.png'
 import { Link } from 'react-router-dom'
 
 export default function Navi() {
