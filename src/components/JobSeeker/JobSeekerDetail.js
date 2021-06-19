@@ -13,7 +13,7 @@ export default function JobSeekerDetail() {
 	useEffect(() => {
 		let resumeService = new ResumeService()
 		resumeService.getByJobSeekerId(id).then(result => setResume(result.data.data))
-		
+
 		let jobSeekerService = new JobSeekerService()
 		jobSeekerService.getJobSeekerById(id).then(result => setJobSeeker(result.data.data))
 	}, [])
@@ -65,42 +65,32 @@ export default function JobSeekerDetail() {
 
 									<h4 className="title">Eğitim</h4>
 									{resume.schools.map((school) => (
-											<div className="content">
-												<div className="circle"></div>
-												<p className="edu_center">{school.schoolName}<small>{school.startedDate} - {school.endedDate}</small></p>
-												<h4 className="edu_stats">{school.graduate.description}</h4>
-												<p className="mb0">{school.schoolDepartment}</p>
-											</div>
-										))}
+										<div className="content">
+											<div className="circle"></div>
+											<p className="edu_center">{school.schoolName}<small>{school.startedDate} - {school.endedDate ? school.endedDate : <small>DevamEdiyor</small>}</small></p>
+											<h4 className="edu_stats">{school.graduate.description}</h4>
+											<p className="mb0">{school.schoolDepartment}</p>
+										</div>
+									))}
 								</div>
 							</div>
 							<div className="col-lg-12">
 								<div className="my_resume_eduarea style2">
-									<h4 className="title">İş Deneyimi</h4>
+
+									<h4 className="title">Eğitim</h4>
 									{resume.jobExperiences.map((jobExperience) => (
 										<div className="content">
 											<div className="circle"></div>
-											<p className="edu_center">{jobExperience.companyName} <small>{jobExperience.startedDate} - {jobExperience.endedDate}</small></p>
+											<p className="edu_center">{jobExperience.companyName}<small>{jobExperience.startedDate} - {jobExperience.endedDate ? jobExperience.endedDate : <small>DevamEdiyor</small>}</small></p>
 											<h4 className="edu_stats">{jobExperience.position}</h4>
+
 										</div>
 									))}
-
 								</div>
 							</div>
 
 							<div className="col-lg-12">
-								<div className="candidate_single_skill">
-									<h4 className="title">Yetenekler</h4>
 
-									{resume.technologies.map((technology) => (
-										<div className="skill_tag">
-											<ul className="tag_list">
-												<li className="list-inline-item"> {technology.description}<a href="#"></a></li>
-											</ul>
-										</div>
-									))}
-
-								</div>
 							</div>
 							<div className="col-lg-12">
 								<div className="my_resume_eduarea style2">

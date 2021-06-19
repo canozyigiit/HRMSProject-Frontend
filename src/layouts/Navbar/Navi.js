@@ -28,7 +28,7 @@ export default function Navi() {
 
 						</li>
 						<li>
-							<Link to="/"><a href=" "><span className="title">İlan Ver</span></a></Link>
+							<Link to="/postJob"><a href=" "><span className="title">İlan Ver</span></a></Link>
 
 						</li>
 					</ul>

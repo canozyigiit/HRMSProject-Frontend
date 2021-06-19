@@ -37,11 +37,10 @@ export default function Footer() {
 						<div className="candidate_widget">
 							<h4>Şehirlere Göre İlanlar</h4>
 							<ul className="list-unstyled">
-								{cities.slice(0, 8).map((city) => (
-									<Link to="/jobAdverts"><li><a key={city.id} href=" ">- {city.name}<i className="flaticon-right-arrow pl15"></i></a></li></Link>
+								{cities.splice(0, 5).map((city) => (
+									<Link to="/jobAdverts"><li key={city.id}  ><a >- {city.name}<i className="flaticon-right-arrow pl15"></i></a></li></Link>
 								))}
 								<Link to="/jobAdverts"><a href=" " className="text-thm float-right">Tüm İlanlara Git<i className="flaticon-right-arrow pl15"></i></a></Link>
-
 							</ul>
 						</div>
 					</div>
@@ -50,18 +49,18 @@ export default function Footer() {
 							<h4>Pozisyonlara Göre İlanlar</h4>
 							<ul className="list-unstyled">
 								{jobPositions.map((jobPosition) => (
-									<li><a href=" ">{jobPosition.name}<i className="flaticon-right-arrow pl15"></i></a></li>
+									<li key={jobPosition.id}><a >{jobPosition.name}<i className="flaticon-right-arrow pl15"></i></a></li>
 								))}
-								<Link to="/jobAdverts"><a href=" " className="text-thm float-right">Tüm İlanlara Git <i className="flaticon-right-arrow pl15"></i></a></Link>
-
 							</ul>
+							<Link to="/jobAdverts"><a  className="text-thm float-right">Tüm İlanlara Git <i className="flaticon-right-arrow pl15"></i></a></Link>
+
 						</div>
 					</div>
 					<div className="col-sm-8 col-md-6 col-md-3 col-lg-4">
 
-						<div className="LI-profile-badge" data-version="v1" data-size="large" data-locale="tr_TR" data-type="vertical" data-theme="dark" data-vanity="can-özyiğit-884568200">
+						{/* <div className="LI-profile-badge" data-version="v1" data-size="large" data-locale="tr_TR" data-type="vertical" data-theme="dark" data-vanity="can-özyiğit-884568200">
 							<a className="LI-simple-link" href='https://tr.linkedin.com/in/can-%C3%B6zyi%C4%9Fit-884568200?trk=profile-badge'>Can Özyiğit</a>
-						</div>
+						</div> */}
 					</div>
 				</div>
 			</div>
