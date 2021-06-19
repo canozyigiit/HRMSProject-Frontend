@@ -92,34 +92,14 @@ export default function JobSeekerDetail() {
 							<div className="col-lg-12">
 
 							</div>
-							<div className="col-lg-12">
-								<div className="my_resume_eduarea style2">
-									<h4 className="title">Awards</h4>
-									<div className="content">
-										<div className="circle"></div>
-										<p className="edu_center">Jan 2018</p>
-										<h4 className="edu_stats">Perfect Attendance Programs</h4>
-										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin a ipsum tellus. Interdum et malesuada fames ac ante ipsum primis in faucibus.</p>
-									</div>
-									<div className="content style2">
-										<div className="circle"></div>
-										<p className="edu_center">Dec 2019</p>
-										<h4 className="edu_stats">Top Performer Recognition</h4>
-										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin a ipsum tellus. Interdum et malesuada fames ac ante ipsum primis in faucibus.</p>
-									</div>
-								</div>
-							</div>
+						
 
 
 						</div>
 					</div>
 					<div className="col-xl-4">
 						<div className="candidate_working_widget">
-							<div className="icon text-thm"><span className="flaticon-controls"></span></div>
-							<div className="details">
-								<h4>Experience</h4>
-								<p>6-9 Years</p>
-							</div>
+							
 							<div className="icon text-thm"><span className="flaticon-old-age-man"></span></div>
 							<div className="details">
 								<h4>Age</h4>
@@ -128,20 +108,17 @@ export default function JobSeekerDetail() {
 							<div className="icon text-thm"><span className="flaticon-paper"></span></div>
 							<div className="details">
 								<h4>Languages</h4>
-								<p>English, Turkish, Hindi</p>
+								{resume.languages.map((language) => (
+								<p>{language.languageName}</p>
+								))}
 							</div>
-							<div className="icon text-thm"><span className="flaticon-mortarboard"></span></div>
-							<div className="details">
-								<h4>Education</h4>
-								<p>Certificate</p>
-							</div>
+							
+							
 						</div>
 						<div className="candidate_social_widget">
 							<ul>
 								<li>Social Profiles</li>
-								<li><a href="#"><i className="fa fa-facebook"></i></a></li>
-								<li><a href="#"><i className="fa fa-twitter"></i></a></li>
-								<li><a href="#"><i className="fa fa-google"></i></a></li>
+								<li><a href="#"><i className="fa fa-github"></i></a></li>
 								<li><a href="#"><i className="fa fa-linkedin"></i></a></li>
 							</ul>
 						</div>
@@ -153,13 +130,7 @@ export default function JobSeekerDetail() {
 								<p>PDF</p>
 							</div>
 						</div>
-						<div className="candidate_document_widget">
-							<div className="icon"><span className="flaticon-doc"></span></div>
-							<div className="details">
-								<h4 className="title">Contrac</h4>
-								<p>DOCX</p>
-							</div>
-						</div>
+						
 						<h4 className="fz20 mb30">Contact Martha Griffin</h4>
 						<div className="candidate_contact_form">
 							<form>
