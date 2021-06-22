@@ -1,5 +1,5 @@
 import React from 'react'
-import headerLogo from '../../assets/images/header-logo5.png'
+import headerLogo from '../../header-logo5.png'
 import { Link } from 'react-router-dom'
 
 export default function Navi() {
@@ -28,7 +28,7 @@ export default function Navi() {
 
 						</li>
 						<li>
-							<Link to="/"><a href=" "><span className="title">İlan Ver</span></a></Link>
+							<Link to="/postJob"><a href=" "><span className="title">İlan Ver</span></a></Link>
 
 						</li>
 					</ul>

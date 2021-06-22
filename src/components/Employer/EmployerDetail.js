@@ -10,16 +10,15 @@ export default function EmployerDetail() {
     let { employerId } = useParams();
    
     const [employer, setEmployer] = useState({})
+    const [jobAdverts, setJobAdverts] = useState([])
+   
     useEffect(() => {
         let employerService = new EmployerService()
         employerService.getEmployerById(employerId).then(result => setEmployer(result.data.data))
-    }, [])
-
-    const [jobAdverts, setJobAdverts] = useState([])
-    useEffect(() => {
         let jobAdvertService = new JobAdvertService()
         jobAdvertService.getAllisOpenTrueAndEmployerId(employerId).then(result => setJobAdverts(result.data.data))
     }, [])
+
     return (
         <div>
             <section className="emplye_single_v2 mt70 mt50 pt50">
@@ -106,7 +105,7 @@ export default function EmployerDetail() {
                                 {jobAdverts.slice(0, 3).map((jobAdvert) => (
                                     <div className="col-lg-12">
                                         <div className="fj_post style2 one">
-                                            <div className="details">
+                                            <div className="details ">
                                                 <h5 className="job_chedule text-thm2 ">{jobAdvert.jobTypeType} - {jobAdvert.jobStyleName}</h5>
                                                 <div className="thumb fn-smd">
                                                 {jobAdvert.employerPhoto ? <img src={jobAdvert.employerPhoto} alt=" " /> : <img src={defaultImage} alt=" " />}
