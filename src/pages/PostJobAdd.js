@@ -25,7 +25,7 @@ export default function PostJobAdd() {
         jobTypeService.getJobTypes().then(result => setJobTypes(result.data.data))
 
         let jobWorkSpaceTypeService = new JobWorkSpaceTypeService();
-        jobWorkSpaceTypeService.getJobTypes().then(result => setJobWorkSpaceTypes(result.data.data))
+        jobWorkSpaceTypeService.getJobWorkSpaceTypes().then(result => setJobWorkSpaceTypes(result.data.data))
 
     }, [])
     // const validationSchema = Yup.object().shape({
@@ -67,7 +67,10 @@ export default function PostJobAdd() {
                                        
                                         onSubmit={(values, { setSubmitting }) => {
                                             let jobAdvertService = new JobAdvertService()
-                                            jobAdvertService.addJobAdvert(values).then()
+                                            jobAdvertService.addJobAdvert(values)
+                                            .then((result) => console.log(result.request))
+                                            .catch((result) => console.log(result))
+                                            console.log(values);
 
                                             setTimeout(() => {
                                                 alert(JSON.stringify(values, null, 2));
@@ -81,18 +84,13 @@ export default function PostJobAdd() {
                                                     <div className="col-md-6 col-lg-12">
                                                         <div className="my_profile_select_box form-group">
                                                             <label htmlFor="exampleFormControlInput9">Pozisyon</label><br />
-
                                                             <Field name="jobPositionId" as="select" className="form-select form-select-lg ">
                                                                 <option placeholder="Pozisyon Seçiniz" defaultValue>Pozisyon Seçiniz</option>
                                                                 {jobPositions.map(jp => (
                                                                     <option key={jp.id} value={jp.id}>{jp.name}</option>
                                                                 ))}
                                                             </Field>
-                                                            {/* {errors.jobPositionId && (
-                                                                <label basic color="red" pointing>
-                                                                    {errors.jobPositionId}
-                                                                </label>
-                                                            )}  */}
+                                                            <ErrorMessage name="jobPositionId" component="div" />
                                                         </div>
                                                     </div>
                                                     <div className="col-lg-12">
@@ -100,12 +98,7 @@ export default function PostJobAdd() {
                                                             <div className="form-group">
                                                                 <label htmlFor="exampleFormControlTextarea1">Açıklama</label>
                                                                 <Field name="description" as="textarea" className="form-control" rows="9" />
-                                                                {/* <Field className="form-control"  rows="9" type="text" name="description" /> */}
-                                                                 {errors.description && (
-                                                                    <label basic color="red" pointing>
-                                                                        {errors.description}
-                                                                    </label>
-                                                                )} 
+                                                                <ErrorMessage name="description" component="div" />
                                                             </div>
                                                         </div>
                                                     </div>
@@ -113,45 +106,35 @@ export default function PostJobAdd() {
                                                         <div className="my_profile_input form-group">
                                                             <label htmlFor="formGroupExampleInputDate">Son Başvuru Tarihi</label>
                                                             <Field type="date" name="deadLine" className="form-control" placeholder="2021-10-10" />
-                                                            {/* {errors.deadLine && (
-                                                                <label basic color="red" pointing>
-                                                                    {errors.deadLine}
-                                                                </label>
-                                                            )} */}
+                                                            <ErrorMessage name="deadLine" component="div" />
                                                         </div>
                                                     </div>
                                                     <div className="col-md-6 col-lg-4">
                                                         <div className="my_profile_input form-group">
                                                             <label htmlFor="formGroupExampleInputDate">Maximum Maaş</label>
                                                             <Field name="salaryMax" type="number" className="form-control" />
+                                                         
                                                         </div>
                                                     </div>
                                                     <div className="col-md-6 col-lg-4">
                                                         <div className="my_profile_input form-group">
                                                             <label htmlFor="formGroupExampleInputDate">Minimum Maaş</label>
                                                             <Field name="salaryMin" type="number" className="form-control" />
+                                                           
                                                         </div>
                                                     </div>
                                                     <div className="col-md-6 col-lg-4">
                                                         <div className="my_profile_input form-group">
                                                             <label htmlFor="formGroupExampleInputDate">Açık Pozisyon Sayısı</label>
                                                             <Field type="number" className="form-control" name="openPositionCount" />
-                                                            {/* {errors.openPositionCount && (
-                                                                <label basic color="red" pointing>
-                                                                    {errors.openPositionCount}
-                                                                </label>
-                                                            )} */}
+                                                            <ErrorMessage name="openPositionCount" component="div" />
                                                         </div>
                                                     </div>
                                                     <div className="col-md-6 col-lg-4">
                                                         <div className="my_profile_input form-group">
                                                             <label htmlFor="formGroupExampleInputDate">İş Veren ID</label>
                                                             <Field name="employerId" type="number" className="form-control" />
-                                                            {/* {errors.employerId && (
-                                                                <label basic color="red" pointing>
-                                                                    {errors.employerId}
-                                                                </label>
-                                                            )} */}
+                                                            <ErrorMessage name="employerId" component="div" />
                                                         </div>
                                                     </div>
                                                     <div className="col-md-6 col-lg-4">
@@ -159,16 +142,16 @@ export default function PostJobAdd() {
                                                             <label htmlFor="exampleFormControlInput9">Şehir</label><br />
                                                             <Field name="cityId" as="select" className="form-select form-select-lg ">
                                                                 <option placeholder="Şehir Seçiniz" defaultValue>Şehir Seçiniz</option>
-                                                                {cities.map(c => (
-                                                                    <option key={c.id} value={c.id}>{c.name}</option>
+                                                                {cities.map(city => (
+                                                                    <option key={city.id} value={city.id}>{city.name}</option>
                                                                 ))}
                                                             </Field>
+                                                            <ErrorMessage name="cityId" component="div" />
                                                         </div>
                                                     </div>
                                                     <div className="col-md-6 col-lg-4">
                                                         <div className="my_profile_select_box form-group">
                                                             <label htmlFor="exampleFormControlInput9">İşin Zaman Şekli</label><br />
-
                                                             <Field name="jobTypeId" as="select" className="form-select form-select-lg ">
                                                                 <option placeholder="İşin Zaman Şeklini Seçiniz" defaultValue>İşin Zaman Şeklini Seçiniz</option>
 
@@ -176,6 +159,7 @@ export default function PostJobAdd() {
                                                                     <option key={jt.id} value={jt.id}>{jt.type}</option>
                                                                 ))}
                                                             </Field>
+                                                      
                                                         </div>
                                                     </div>
                                                     <div className="col-md-6 col-lg-4">
@@ -188,6 +172,7 @@ export default function PostJobAdd() {
                                                                     <option key={jw.id} value={jw.id}>{jw.name}</option>
                                                                 ))}
                                                             </Field>
+                                                       
                                                         </div>
                                                     </div>
                                                     <div className="col-lg-4">

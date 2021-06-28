@@ -1,5 +1,4 @@
 
-@import url(../css/jquery-ui.min.css);
 @import url(../css/font-awesome.min.css);
 @import url(../css/font-awesome-animation.min.css);
 @import url(../css/menu.css);
@@ -16,6 +15,7 @@
 @import url(../css/map-css/searcher.css);
 @import url(../css/map-css/info-box.css);
 @import url(../css/timecounter.css);
+@import url('https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css');
 @import url(https://fonts.googleapis.com/css?family=Nunito:400,600,800&amp;subset=vietnamese);
 html{
     font-size:100%
