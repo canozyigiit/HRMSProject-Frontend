@@ -7,5 +7,11 @@ export default class EmployerService{
     getEmployerById(id){
         return axios.get("http://localhost:8080/api/employers/getbyid/" + id);
     }
+    getEmployerByisConfirmedFlase(){
+        return axios.get("http://localhost:8080/api/employers/getByisConfirmedFalse")
+    }
+    getByisUpdatedTrue(){
+        return axios.get("http://localhost:8080/api/employers/getByisUpdatedTrue")
+    }
     
 }

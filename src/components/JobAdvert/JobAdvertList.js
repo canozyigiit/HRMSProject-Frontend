@@ -1,32 +1,59 @@
 import React, { useState, useEffect } from 'react'
 import JobAdvertService from '../../services/JobAdvertService'
+import JobTypeService from '../../services/JobTypeService'
+import JobWorkSpaceTypeService from '../../services/JobWorkSpaceTypeService'
 import JobPositionService from '../../services/JobPositionService'
 import defaultImage from '../../images/logo.png'
 import { Link } from 'react-router-dom'
-
+import { Pagination } from 'antd';
 
 
 export default function JobAdvertList() {
     const [jobAdverts, setJobAdverts] = useState([])
+    const [activePage, setActivePage] = useState(1);
     const [jobPositions, setjobPositions] = useState([])
+    const [jobTypes, setJobTypes] = useState([])
+    const [jobWorkSpaceTypes, setJobWorkSpaceTypes] = useState([])
+    const [searchTerm, setsearchTerm] = useState("")
+    const [searchTermCityName, setsearchTermCityName] = useState("")
+
+    const changePage = (page) => {
+        setActivePage(page);
+    };
 
     useEffect(() => {
         let jobAdvertService = new JobAdvertService()
-        jobAdvertService.getAllOpenTrueJobAdvertList().then(result => setJobAdverts(result.data.data))
+        jobAdvertService.getAllByPage(activePage).then(result => setJobAdverts(result.data.data))
+
+    }, [activePage])
+
+   
+    useEffect(() => {
+
         let jobPositionService = new JobPositionService()
         jobPositionService.getJobPositions().then(result => setjobPositions(result.data.data))
-    }, [])
 
+        let jobTypeService = new JobTypeService()
+        jobTypeService.getJobTypes().then(result => setJobTypes(result.data.data))
+
+        let jobWorkSpaceTypeService = new JobWorkSpaceTypeService()
+        jobWorkSpaceTypeService.getJobWorkSpaceTypes().then(result => setJobWorkSpaceTypes(result.data.data))
+
+    }, [])
 
     return (
         <section className="our-faq bgc-fa mt50">
             <div className="container">
                 <div className="row">
                     <div className="col-lg-3 col-xl-3 dn-smd">
+
                         <div className="faq_search_widget mb30">
-                            <h4 className="fz20 mb15">Arama Kelimeleri</h4>
+                            <h4 className="fz20 mb15">İş İlanları</h4>
+
                             <div className="input-group mb-3">
-                                <input type="text" className="form-control" placeholder="ör. BackendDeveloper" aria-label="Recipient's username" aria-describedby="button-addon2" />
+                                <input type="text" onChange={(event) => {
+                                    setsearchTerm(event.target.value)
+                                }} type="text" className="form-control" placeholder="ör. BackendDeveloper" />
                                 <div className="input-group-append">
                                     <button className="btn btn-outline-secondary" type="button" id="button-addon2"><span className="flaticon-search"></span></button>
                                 </div>
@@ -35,50 +62,61 @@ export default function JobAdvertList() {
                         <div className="faq_search_widget mb30">
                             <h4 className="fz20 mb15">Lokasyon</h4>
                             <div className="input-group mb-3">
-                                <input type="text" className="form-control" placeholder="Tüm Lokasyonlar" aria-label="Recipient's username" aria-describedby="button-addon2" />
+                                <input onChange={(event) => {
+                                    setsearchTermCityName(event.target.value)
+                                }} type="text" className="form-control" placeholder="Tüm Lokasyonlar" aria-label="Recipient's username" aria-describedby="button-addon2" />
                                 <div className="input-group-append">
                                     <button className="btn btn-outline-secondary" type="button" id="button-addon3"><span className="flaticon-location-pin"></span></button>
                                 </div>
                             </div>
                         </div>
-
-
                         <div className="cl_latest_activity mb30">
                             <h4 className="fz20 mb15">İş Tipi</h4>
                             <div className="ui_kit_whitchbox">
+                                {jobTypes.map((jobType) => (
+                                    <div className="custom-control custom-switch">
+                                        <input type="checkbox" className="custom-control-input" id={jobType.id} />
+                                        <label className="custom-control-label" htmlFor={jobType.id}>{jobType.type}</label>
+                                    </div>
+                                ))}
 
-                                <div className="custom-control custom-switch">
-                                    <input type="checkbox" className="custom-control-input" id="customSwitch2" />
-                                    <label className="custom-control-label" htmlFor="customSwitch2">Full Time</label>
-                                </div>
-                                <div className="custom-control custom-switch">
-                                    <input type="checkbox" className="custom-control-input" id="customSwitch3" />
-                                    <label className="custom-control-label" htmlFor="customSwitch3">Part Time</label>
-                                </div>
-                                <div className="custom-control custom-switch">
-                                    <input type="checkbox" className="custom-control-input" id="customSwitch4" />
-                                    <label className="custom-control-label" htmlFor="customSwitch4">Uzaktan</label>
-                                </div>
-                                <div className="custom-control custom-switch">
-                                    <input type="checkbox" className="custom-control-input" id="customSwitch5" />
-                                    <label className="custom-control-label" htmlFor="customSwitch5">İş Yerinde</label>
-                                </div>
                             </div>
                         </div>
-
-
-
+                        <div className="cl_latest_activity mb30">
+                            <h4 className="fz20 mb15">İş Tipi</h4>
+                            <div className="ui_kit_whitchbox">
+                                {jobWorkSpaceTypes.map((jobWorkSpaceType) => (
+                                    <div className="custom-control custom-switch">
+                                        <input type="checkbox" className="custom-control-input" id={jobWorkSpaceType.id} />
+                                        <label className="custom-control-label" htmlFor={jobWorkSpaceType.id}>{jobWorkSpaceType.name}</label>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
                     </div>
                     <div className="col-md-12 col-lg-9 col-xl-9">
-                      
                         <div className="row">
-                        <div className="col-sm-6 col-lg-6">
+                            <div className="col-sm-6 col-lg-6">
                                 <div className="candidate_job_alart_btn">
                                     <h4 className="fz20 mt10">Tüm İş İlanları</h4>
                                 </div>
                             </div>
+                            <div className="col-sm-6 col-lg-6 text-right mt50">
+                                <ul>
+                                    <li className="list-inline-item">Sırala:</li>
+                                    <li className="list-inline-item">
+                                        <select className="form-select" aria-label="Default select example">
+                                            <option defaultValue>Sıralama seçiniz</option>
+                                            <option >En Son Yayınlanan İlanlar</option>
+
+                                        </select>
+                                    </li>
+                                </ul>
+                            </div>
+
+
                             <div className="col-sm-12 col-lg-6">
-                               
+
                                 <div className="content_details">
                                     <div className="details">
                                         {/* <a href="javascript:void(0)" className="closebtn" onClick="closeNav()"><span>Hide Filter</span><i>×</i></a> */}
@@ -97,7 +135,21 @@ export default function JobAdvertList() {
                                     </div>
                                 </div>
                             </div>
-                            {jobAdverts.map((jobAdvert) => (
+                            {jobAdverts.filter((jobAdvert) => {
+                                if (searchTerm == "") {
+                                    return jobAdvert
+                                }
+                                else if (jobAdvert.jobPositionName.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase())) {
+                                    return jobAdvert;
+                                }
+
+                            }).filter((jobAdvert) => {
+                                if (searchTermCityName == "") {
+                                    return jobAdvert;
+                                } else if (jobAdvert.cityName.toLocaleLowerCase().includes(searchTermCityName.toLocaleLowerCase())) {
+                                    return jobAdvert;
+                                }
+                            }).map((jobAdvert) => (
                                 <div className="col-lg-12 mt30" key={jobAdvert.id}>
                                     <div className="fj_post style2 jlv5">
                                         <div className="details">
@@ -115,7 +167,7 @@ export default function JobAdvertList() {
                                             </ul>
                                         </div>
                                         <ul className="pjlv5">
-                                          
+
                                             <li className="list-inline-item">
                                                 <Link to={`/jobAdverts/${jobAdvert.id}`}><a href=" " className="btn btn-md btn-transparent" >İlana Git</a></Link>
                                             </li>
@@ -123,30 +175,19 @@ export default function JobAdvertList() {
                                     </div>
                                 </div>
                             ))}
-                            {/* <div className="col-lg-12">
-                                <div className="mbp_pagination">
-                                    <ul className="page_navigation">
-                                        <li className="page-item disabled">
-                                            <a className="page-link" href=" " tabIndex="-1" aria-disabled="true"> <span className="flaticon-left-arrow"></span> Previous</a>
-                                        </li>
-                                        <li className="page-item"><a className="page-link" href=" ">1</a></li>
-                                        <li className="page-item active" aria-current="page">
-                                            <a className="page-link" href=" ">2 <span className="sr-only">(current)</span></a>
-                                        </li>
-                                        <li className="page-item"><a className="page-link" href=" ">3</a></li>
-                                        <li className="page-item"><a className="page-link" href=" ">4</a></li>
-                                        <li className="page-item"><a className="page-link" href=" ">5</a></li>
-                                        <li className="page-item"><a className="page-link" href=" ">...</a></li>
-                                        <li className="page-item"><a className="page-link" href=" ">45</a></li>
-                                        <li className="page-item">
-                                            <a className="page-link" href=" ">Next <span className="flaticon-right-arrow"></span></a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div> */}
+
+                            <Pagination
+                                style={{ 'marginLeft': '250px' }}
+                                total={50}
+                                current={activePage}
+                                onChange={changePage}
+                                showQuickJumper
+                                defaultCurrent={1}
+                            />
 
                         </div>
                     </div>
+
                 </div>
             </div>
         </section>
@@ -154,3 +195,5 @@ export default function JobAdvertList() {
 
     )
 }
+
+

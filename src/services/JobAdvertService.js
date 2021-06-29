@@ -25,6 +25,11 @@ export default class JobAdvertService {
     addJobAdvert(values){
         return axios.post("http://localhost:8080/api/jobadverts/add" , values)
     }
-    
+    getJobAdvertByisConfirmedFlase(){
+        return axios.get("http://localhost:8080/api/jobadverts/getByisConfirmedFalse")
+    }
+    getAllByPage(pageNo){
+        return axios.get("http://localhost:8080/api/jobadverts/getAllByPage?pageNo=" + pageNo)
+    }
    
 }

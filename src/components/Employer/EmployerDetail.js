@@ -8,13 +8,14 @@ import defaultImage from '../../images/logo.png'
 export default function EmployerDetail() {
 
     let { employerId } = useParams();
-   
+
     const [employer, setEmployer] = useState({})
     const [jobAdverts, setJobAdverts] = useState([])
-   
+
     useEffect(() => {
         let employerService = new EmployerService()
         employerService.getEmployerById(employerId).then(result => setEmployer(result.data.data))
+
         let jobAdvertService = new JobAdvertService()
         jobAdvertService.getAllisOpenTrueAndEmployerId(employerId).then(result => setJobAdverts(result.data.data))
     }, [])
@@ -27,17 +28,16 @@ export default function EmployerDetail() {
                         <div className="col-lg-9 col-xl-9">
                             <div className="candidate_personal_info style3">
                                 <div className="thumb">
-                                {employer.photo ? <img src={employer.photo} alt=" " /> : <img src={defaultImage} alt=" " />}
+                                    {employer.photo ? <img src={employer.photo} alt=" " /> : <img src={defaultImage} alt=" " />}
                                 </div>
                                 <div className="details">
                                     <h3>{employer.companyName}</h3>
                                     <p className="text-thm2"></p>
                                     <ul className="address_list">
-                                        <li className="list-inline-item"><a href=" "><span className="flaticon-link text-thm"></span>{employer.webSite}</a></li>
-                                        <li className="list-inline-item"><a href=" "><span className="flaticon-phone-call text-thm"></span> {employer.phone}</a></li>
-                                        <li className="list-inline-item"><a href=" "><span className="flaticon-mail text-thm"></span> {employer.email}</a></li>
+                                        <li className="list-inline-item"><a ><span className="flaticon-link text-thm"></span>{employer.webSite}</a></li>
+                                        <li className="list-inline-item"><a ><span className="flaticon-phone-call text-thm"></span> {employer.phone}</a></li>
+                                        <li className="list-inline-item"><a ><span className="flaticon-mail text-thm"></span> {employer.email}</a></li>
                                     </ul>
-
                                 </div>
                             </div>
                         </div>
@@ -60,21 +60,21 @@ export default function EmployerDetail() {
                                             <div className="icon text-thm"><span className="flaticon-paper-plane"></span></div>
                                             <div className="details">
                                                 <p>Lokasyon</p>
-                                                <p>United States, San Diego</p>
+                                                <p>{employer.city?.name}</p>
                                             </div>
                                         </div>
                                         <div className="col-sm-4 col-lg-4">
                                             <div className="icon text-thm"><span className="flaticon-timeline"></span></div>
                                             <div className="details">
                                                 <p>Since</p>
-                                                <p>2002</p>
+                                                <p>{employer.since}</p>
                                             </div>
                                         </div>
                                         <div className="col-sm-4 col-lg-4">
                                             <div className="icon text-thm"><span className="flaticon-label"></span></div>
                                             <div className="details">
                                                 <p>Yayınlanan İlan</p>
-                                                <p>4</p>
+                                                <p>{jobAdverts.length}</p>
                                             </div>
                                         </div>
                                         <div className="col-sm-4 col-lg-4">
@@ -88,7 +88,7 @@ export default function EmployerDetail() {
                                             <div className="icon text-thm"><span className="flaticon-team"></span></div>
                                             <div className="details">
                                                 <p>Takım Boyutu</p>
-                                                <p>15</p>
+                                                <p>{employer.teamSize}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -102,13 +102,18 @@ export default function EmployerDetail() {
                                         <h4 className="title mb30">Bazı Açık Pozisyonlar</h4>
                                     </div>
                                 </div>
+                                {jobAdverts.length < 1 &&
+                                    <div className="alert alert-success" role="alert">
+                                        Bu şirkete ait ilan şu an da yok!
+                                    </div>}
+                                    
                                 {jobAdverts.slice(0, 3).map((jobAdvert) => (
                                     <div className="col-lg-12">
                                         <div className="fj_post style2 one">
                                             <div className="details ">
-                                                <h5 className="job_chedule text-thm2 ">{jobAdvert.jobTypeType} - {jobAdvert.jobStyleName}</h5>
+                                                <h5 className="job_chedule text-thm ">{jobAdvert.jobTypeType} - {jobAdvert.jobWorkSpaceTypeName}</h5>
                                                 <div className="thumb fn-smd">
-                                                {jobAdvert.employerPhoto ? <img src={jobAdvert.employerPhoto} alt=" " /> : <img src={defaultImage} alt=" " />}
+                                                    {jobAdvert.employerPhoto ? <img src={jobAdvert.employerPhoto} alt=" " /> : <img src={defaultImage} alt=" " />}
                                                 </div>
                                                 <h4>{jobAdvert.jobPositionName}</h4>
                                                 <p> Yayın Tarihi :{new Date(jobAdvert.createdDate).toDateString()}<a className="text-thm" href=" "> Şirket :{jobAdvert.employerCompanyName}</a></p>

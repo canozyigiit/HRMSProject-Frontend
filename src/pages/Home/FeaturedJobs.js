@@ -18,7 +18,7 @@ export default function FeaturedJobs() {
 					<div className="col-lg-12">
 						<div className="ulockd-main-title">
 							<h4 className=" float-left fs-2 fst-italic">Öne Çıkan İlanlar</h4>
-							<Link to="/jobAdverts"><a href=" " className="text-thm float-right">Tüm İlanlara Git<i className="flaticon-right-arrow pl15"></i></a></Link>
+							<Link to="/jobAdverts"><a  className="text-thm float-right">Tüm İlanlara Git<i className="flaticon-right-arrow pl15"></i></a></Link>
 						</div>
 					</div>
 				</div>

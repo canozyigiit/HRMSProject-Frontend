@@ -63,13 +63,12 @@ export default function FooterTopArea() {
 				</div>
 				<div className="col-sm-12 col-lg-4 pb25 pt25 pl30">
 					<div className="footer_social_widget mt15">
-						<p className="float-left mt10">Follow Us</p>
+						<p className="float-left mt10">Follow Us : </p>
 						<ul>
 							<li className="list-inline-item"><a href=" "><i className="fa fa-facebook"></i></a></li>
 							<li className="list-inline-item"><a href=" "><i className="fa fa-twitter"></i></a></li>
 							<li className="list-inline-item"><a href=" "><i className="fa fa-instagram"></i></a></li>
-							<li className="list-inline-item"><a href=" "><i className="fa fa-pinterest"></i></a></li>
-							<li className="list-inline-item"><a href=" "><i className="fa fa-dribbble"></i></a></li>
+							<li className="list-inline-item"><a href=" "><i className="fa fa-linkedin"></i></a></li>
 						</ul>
 					</div>
 				</div>
