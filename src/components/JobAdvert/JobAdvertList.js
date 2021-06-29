@@ -17,15 +17,17 @@ export default function JobAdvertList() {
     const [searchTerm, setsearchTerm] = useState("")
     const [searchTermCityName, setsearchTermCityName] = useState("")
 
-    const onChange = (page) => {
-        console.log(page);
+    const changePage = (page) => {
         setActivePage(page);
     };
 
     useEffect(() => {
         let jobAdvertService = new JobAdvertService()
         jobAdvertService.getAllByPage(activePage).then(result => setJobAdverts(result.data.data))
+
     }, [activePage])
+
+   
     useEffect(() => {
 
         let jobPositionService = new JobPositionService()
@@ -44,8 +46,10 @@ export default function JobAdvertList() {
             <div className="container">
                 <div className="row">
                     <div className="col-lg-3 col-xl-3 dn-smd">
+
                         <div className="faq_search_widget mb30">
                             <h4 className="fz20 mb15">İş İlanları</h4>
+
                             <div className="input-group mb-3">
                                 <input type="text" onChange={(event) => {
                                     setsearchTerm(event.target.value)
@@ -97,6 +101,20 @@ export default function JobAdvertList() {
                                     <h4 className="fz20 mt10">Tüm İş İlanları</h4>
                                 </div>
                             </div>
+                            <div className="col-sm-6 col-lg-6 text-right mt50">
+                                <ul>
+                                    <li className="list-inline-item">Sırala:</li>
+                                    <li className="list-inline-item">
+                                        <select className="form-select" aria-label="Default select example">
+                                            <option defaultValue>Sıralama seçiniz</option>
+                                            <option >En Son Yayınlanan İlanlar</option>
+
+                                        </select>
+                                    </li>
+                                </ul>
+                            </div>
+
+
                             <div className="col-sm-12 col-lg-6">
 
                                 <div className="content_details">
@@ -159,9 +177,10 @@ export default function JobAdvertList() {
                             ))}
 
                             <Pagination
+                                style={{ 'marginLeft': '250px' }}
                                 total={50}
                                 current={activePage}
-                                onChange={onChange}
+                                onChange={changePage}
                                 showQuickJumper
                                 defaultCurrent={1}
                             />

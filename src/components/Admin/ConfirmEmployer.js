@@ -39,8 +39,8 @@ export default function ConfirmEmployer() {
                             <p><span className="flaticon-link text-thm"></span>  &nbsp;{employer.webSite} <span className="text-thm2">   &nbsp;<span className="flaticon-phone-call text-thm">  &nbsp;</span>{employer.phone}</span></p>
 
                             <ul className="address_list">
-                                <li className="list-inline-item"><a href="#"><span className="flaticon-location-pin"></span>  &nbsp;{employer.city?.name}</a></li>
-                                <li className="list-inline-item"><a href="#"><span className="flaticon-team"></span>  {employer.teamSize}</a></li>
+                                <li className="list-inline-item"><a ><span className="flaticon-location-pin"></span>  &nbsp;{employer.city?.name}</a></li>
+                                <li className="list-inline-item"><a ><span className="flaticon-team"></span>  {employer.teamSize}</a></li>
                             </ul>
                         </div>
                         <ul className="view_edit_delete_list mt25 float-right fn-xl">

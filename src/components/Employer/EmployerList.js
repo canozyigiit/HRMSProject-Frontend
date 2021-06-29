@@ -65,7 +65,7 @@ export default function EmployerList() {
                                         <div className="details">
                                             <Link to={`/employers/${employer.id}`}><a href=" " className="text-thm" >{employer.companyName}</a></Link>
                                             <p className="text-thm2">{employer.webSite}</p>
-                                            <p><span class="flaticon-location-pin"></span>{employer.city?.name}</p>
+                                            <p><span className="flaticon-location-pin"></span>{employer.city?.name}</p>
                                         </div>
                                     </div>
                                 </div>
