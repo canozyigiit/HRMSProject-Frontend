@@ -14,6 +14,7 @@ export default function ConfirmUpdateEmployer() {
     const showUpdate=(employerId)=>{
        let currentEmployerService = new CurrentEmployerService()
        currentEmployerService.getByEmployerId(employerId).then(result => setCurrentEmployer(result.data.data))
+        console.log(currentEmployer.data)
     }
     const confirmed = (companyName, systemPersonnelId) => {
         let confirmEmployerService = new ConfirmEmployerService()
@@ -78,7 +79,7 @@ export default function ConfirmUpdateEmployer() {
                                                         <li className="list-inline-item"><a ><span className="flaticon-link text-thm"></span>{employer.webSite}</a></li>
                                                         <li className="list-inline-item"><a ><span className="flaticon-phone-call text-thm"></span> {employer.phone}</a></li>
                                                         <li className="list-inline-item"><a ><span className="flaticon-mail text-thm"></span> {employer.email}</a></li>
-                                                        <li className="list-inline-item"><a ><span className="flaticon-paper-plane"></span>{employer.city?.name}</a></li>
+                                                        <li className="list-inline-item"><a ><span className="flaticon-paper-plane"></span>{employer.city?.id}</a></li>
                                                         <li className="list-inline-item"><a ><span className="flaticon-timeline"></span>{employer.since}</a></li>
                                                         <li className="list-inline-item"><a ><span className="flaticon-team"></span> {employer.teamSize}</a></li>
                                                     </ul>
@@ -91,18 +92,18 @@ export default function ConfirmUpdateEmployer() {
                                         <div className="col-lg-9 col-xl-9">
                                             <div className="candidate_personal_info style3">
                                                 <div className="thumb">
-                                                {currentEmployer.photo ? <img src={currentEmployer.photo} style={{ maxHeight: "150px" }} /> : <img src={defaultImage} style={{ maxHeight: "90px" }}/>}
+                                                {currentEmployer.data?.photo ? <img src={currentEmployer.data?.photo} style={{ maxHeight: "150px" }} /> : <img src={defaultImage} style={{ maxHeight: "90px" }}/>}
                                                 </div>
                                                 <div className="details">
-                                                    <h3>{currentEmployer.companyName}</h3>
+                                                    <h3>{currentEmployer.data?.companyName}</h3>
                                                     <p className="text-thm2"></p>
                                                     <ul className="address_list">
-                                                        <li className="list-inline-item"><a ><span className="flaticon-link text-thm"></span>{currentEmployer.webSite}</a></li>
-                                                        <li className="list-inline-item"><a ><span className="flaticon-phone-call text-thm"></span> {currentEmployer.phone}</a></li>
-                                                        <li className="list-inline-item"><a ><span className="flaticon-mail text-thm"></span> {currentEmployer.email}</a></li>
-                                                        <li className="list-inline-item"><a ><span className="flaticon-paper-plane"></span>{currentEmployer.city?.name}</a></li>
-                                                        <li className="list-inline-item"><a ><span className="flaticon-timeline"></span>{currentEmployer.since}</a></li>
-                                                        <li className="list-inline-item"><a ><span className="flaticon-team"></span> {currentEmployer.teamSize}</a></li>
+                                                        <li className="list-inline-item"><a ><span className="flaticon-link text-thm"></span>{currentEmployer.data?.webSite}</a></li>
+                                                        <li className="list-inline-item"><a ><span className="flaticon-phone-call text-thm"></span> {currentEmployer.data?.phone}</a></li>
+                                                        <li className="list-inline-item"><a ><span className="flaticon-mail text-thm"></span> {currentEmployer.data?.email}</a></li>
+                                                        <li className="list-inline-item"><a ><span className="flaticon-paper-plane"></span>{currentEmployer.data?.city?.id}</a></li>
+                                                        <li className="list-inline-item"><a ><span className="flaticon-timeline"></span>{currentEmployer.data?.since}</a></li>
+                                                        <li className="list-inline-item"><a ><span className="flaticon-team"></span> {currentEmployer.data?.teamSize}</a></li>
                                                     </ul>
                                                 </div>
                                             </div>

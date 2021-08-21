@@ -106,7 +106,7 @@ export default function JobAdvertList() {
                                     <li className="list-inline-item">Sırala:</li>
                                     <li className="list-inline-item">
                                         <select className="form-select" aria-label="Default select example">
-                                            <option defaultValue>Sıralama seçiniz</option>
+                                            <option defaultValue>Sırala</option>
                                             <option >En Son Yayınlanan İlanlar</option>
 
                                         </select>

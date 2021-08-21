@@ -8,6 +8,7 @@ import { Switch } from 'react-router-dom';
 import ChangePassword from '../pages/ChangePassword';
 import AdminProfile from '../components/Admin/AdminProfile';
 import ConfirmUpdateEmployer from '../components/Admin/ConfirmUpdateEmployer';
+import AdminMap from '../components/Admin/AdminMap';
 
 
 export default function AdminManagement() {
@@ -24,6 +25,8 @@ export default function AdminManagement() {
                         <Route exact path="/admin/confirmUpdateEmployer" component={ConfirmUpdateEmployer} />
                         <Route exact path="/admin/confirmJobAdvert" component={ConfirmJobAdvert}/>
                         <Route exact path="/admin/changePassword" component={ChangePassword} />
+                        <Route exact path="/admin/map" component={AdminMap} />
+
                         <Route exact path="/admin" component={AdminProfile} />
 
                         <Route path="*" component={NotFoundPage}></Route>

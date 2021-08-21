@@ -3,7 +3,7 @@ import JobSeekerSideBar from '../components/JobSeekerProfile/JobSeekerSideBar'
 import { Switch } from 'react-router-dom';
 import { Route } from 'react-router';
 import NotFoundPage from '../pages/NotFoundPage';
-import MyResume from '../components/JobSeekerProfile/MyResume';
+import Resume from '../components/JobSeekerProfile/Resume';
 import JobSeekerProfil from '../components/JobSeekerProfile/JobSeekerProfil';
 
 
@@ -20,7 +20,11 @@ export default function JobSeekerManagement() {
                    
                         <Switch>
                         <Route exact path="/jobSeeker/profil" component={JobSeekerProfil}/>
-                        <Route exact path="/jobSeeker/resume" component={MyResume}/>
+                        <Route exact path="/jobSeeker/resume" component={Resume}/>
+
+
+                        <Route exact path="/jobSeeker" component={JobSeekerProfil}/>
+
                             <Route path="*" component={NotFoundPage}></Route>
                         </Switch>
                     </div>

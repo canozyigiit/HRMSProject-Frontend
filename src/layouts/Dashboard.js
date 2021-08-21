@@ -34,26 +34,20 @@ export default function Dashboard() {
 
                 <Route exact path="/employers" component={EmployerList} />
                 <Route exact path="/employers/:employerId" component={EmployerDetail} />
-                <Route exact path="/postJob" component={PostJobAdd} />
 
                 <Route exact path="/jobSeekers" component={JobSeekerList} />
                 <Route exact path="/jobSeekers/:jobSeekerId" component={JobSeekerDetail} />
-                <Route  path="/jobSeeker" component={JobSeekerManagement} />
 
+                <Route  path="/jobSeeker" component={JobSeekerManagement} />
                 <Route path="/admin" component={AdminManagement}></Route>
 
                 <Route exact path="/addCity" component={CityAdd} />
                 <Route exact path="/login" component={Login} />
-
-
-
-
+                <Route exact path="/postJob" component={PostJobAdd} />
                 <Route path="*" component={NotFoundPage}></Route>
             </Switch>
-
             <FooterTopArea />
             <Footer />
-
             <BottomArea />
         </div>
 

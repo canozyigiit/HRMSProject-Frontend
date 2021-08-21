@@ -31,5 +31,11 @@ export default class JobAdvertService {
     getAllByPage(pageNo){
         return axios.get("http://localhost:8080/api/jobadverts/getAllByPage?pageNo=" + pageNo)
     }
+    getByisOpenTrueAndJobWorkSpaceTypeName(name,pageNo){
+        return axios.get("http://localhost:8080/api/jobadverts/getByisOpenTrueAndJobWorkSpaceType_Name?name="+name+"&pageNo="+pageNo)
+    }
+    getByisOpenTrueAndJobWorkSpaceTypeName(name,pageNo){
+        return axios.get("http://localhost:8080/api/jobadverts/getByisOpenTrueAndJobType_Type?pageNo="+pageNo+"&type="+name)
+    }
    
 }
